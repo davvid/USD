@@ -312,3 +312,11 @@ set(PXR_COMPILER_CACHE_NAME "ccache"
         STRING
         "The name of the compiler cache program to use"
 )
+
+if (WIN32)
+    set(openusd_cmake_dir "cmake/openusd")
+else()
+    set(openusd_cmake_dir "${CMAKE_INSTALL_LIBDIR}/cmake/openusd")
+endif()
+set(OPENUSD_CMAKE_INSTALL_DESTINATION "${openusd_cmake_dir}" CACHE STRING
+    "Destination within the installation for openusd cmake config files")

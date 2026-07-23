@@ -71,3 +71,14 @@ install(FILES
 )
 
 install(EXPORT pxrTargets DESTINATION "cmake")
+
+configure_file(
+    "${PROJECT_SOURCE_DIR}/cmake/resources/openusd-config.cmake.in"
+    "${PROJECT_BINARY_DIR}/openusd-config.cmake" @ONLY)
+install(
+    FILES "${PROJECT_BINARY_DIR}/openusd-config.cmake"
+    DESTINATION "${OPENUSD_CMAKE_INSTALL_DESTINATION}")
+install(
+    EXPORT pxrTargets
+    DESTINATION "${OPENUSD_CMAKE_INSTALL_DESTINATION}"
+    NAMESPACE "openusd::")

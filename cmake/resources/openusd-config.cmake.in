@@ -1,0 +1,27 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+# TODO: rename pxrTargets to openusd-targets.
+include("${CMAKE_CURRENT_LIST_DIR}/pxrTargets.cmake")
+
+find_dependency(TBB)
+
+if (@PXR_ENABLE_PYTHON_SUPPORT@)
+    find_dependency(Python3 COMPONENTS Interpreter Development)
+endif()
+if (@PXR_FIND_OPENSUBDIV_IN_CONFIG@)
+    find_dependency(OpenSubdiv @OpenSubdiv_VERSION@ CONFIG)
+else()
+    find_dependency(OpenSubdiv 3)
+endif()
+if (@PXR_ENABLE_MATERIALX_SUPPORT@)
+    find_dependency(MaterialX)
+endif()
+if(@Imath_FOUND@)
+    find_dependency(Imath)
+endif()
+if (NOT "@PXR_WORK_IMPL_PACKAGE@" STREQUAL "")
+    find_dependency(@PXR_WORK_IMPL_PACKAGE@)
+endif()
+
+set(openusd_FOUND TRUE)
