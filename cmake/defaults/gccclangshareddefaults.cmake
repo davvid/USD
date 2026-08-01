@@ -15,7 +15,7 @@ include(Options)
 # mismatches. In order for us to catch these issues on all platforms we enable 
 # the warning for mismatched-tags
 # here for all GCC/Clang builds.
-set(_PXR_GCC_CLANG_SHARED_CXX_FLAGS "${_PXR_GCC_CLANG_SHARED_CXX_FLAGS} -Wall -Wformat-security -Wmismatched-tags")
+set(_PXR_GCC_CLANG_SHARED_CXX_FLAGS "${_PXR_GCC_CLANG_SHARED_CXX_FLAGS} -Wall -Wformat-security -Wmismatched-tags -fwrapv")
 
 # Errors are warnings in strict build mode.
 if (${PXR_STRICT_BUILD_MODE})
